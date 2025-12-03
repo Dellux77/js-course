@@ -1,0 +1,26 @@
+class Node {
+    constructor(id) {
+        this.id = id;
+        this.store = new Map();
+        this.log = []; // Write-ahead log for persistence
+    }
+
+    put(key, value) {
+        this.log.push({ op: 'PUT', key, value });
+        this.store.set(key, value);
+        this.replicate(key, value);
+    }
+
+    replicate(key, value) {
+        // Send data to N-1 other nodes
+        peers.forEach(peer => peer.store.set(key, value));
+    }
+}
+
+// Consistent Hashing (simplified)
+function getNodeForKey(key) {
+    const hash = simpleHash(key);
+    return nodes[hash % nodes.length];
+}
+
+

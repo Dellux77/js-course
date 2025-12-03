@@ -6,5 +6,3 @@ function celsiusToFahrenheit(celsius) {
 // Example usage:
 let tempC = 25;
 let tempF = celsiusToFahrenheit(tempC);
-
-console.log(tempC + "°C is " + tempF + "°F");

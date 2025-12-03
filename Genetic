@@ -1,0 +1,33 @@
+class DNA {
+  constructor(length) {
+    this.genes = Array(length).fill().map(() => p5.Vector.random2D());
+  }
+  crossover(partner) {
+    // Combine half of this DNA with half of partner DNA
+  }
+  mutate(rate) {
+    // Randomly alter vector direction based on rate
+  }
+}
+
+class Population {
+  constructor() {
+    this.creatures = Array(100).fill().map(() => new Creature());
+    this.matingPool = [];
+  }
+
+  evaluate() {
+    let maxFit = 0;
+    // Calculate fitness: (1 / distanceToTarget)
+    this.creatures.forEach(c => {
+       c.calcFitness();
+       if(c.fitness > maxFit) maxFit = c.fitness;
+    });
+    // Normalize and build mating pool
+  }
+
+  naturalSelection() {
+    // Pick two parents from pool, crossover, mutate, create new population
+  }
+}
+
